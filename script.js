@@ -1,30 +1,56 @@
-var start = document.querySelector("#start");
+var startBtn = document.querySelector("#start");
 var startCard = document.querySelector("#startCard");
 var quiz = document.querySelector("#quiz");
-var question = document.querySelector("#question");
+var questionDis = document.querySelector("#question");
+var answerChoices = document.querySelector(".answer-choices");
 var progressBar = document.querySelector("#progress");
-var choiceA = document.querySelector("#A");
-var choiceB = document.querySelector("#B");
-var choiceC = document.querySelector("#C");
-var choiceD = document.querySelector("#D");
+var timer = document.querySelector("#timer");
 
-// let lastQuestionIndex = questions.length - 1;
-// let runningQuestionIndex = 0;
-
-start.addEventListener("click", startQuiz);
+startBtn.addEventListener("click", startQuiz);
 
 function startQuiz() {
   startCard.style.display = "none";
   quiz.style.display = "block";
   // countRender()
-  progressBar.style.display = "block";
+  questionRender();
+  // progressBar.style.display = "block";
 }
 
-function renderQuestion() {
-  let q = question[runningQuestionIndex];
-  question.textContent = "<p>" + q.question + "</p>";
-  choiceA.textContent = q.choiceA;
-  choiceB.textContent = q.choiceB;
-  choiceC.textContent = q.choiceC;
-  choiceD.textContent = q.choiceD;
+// questions array//
+let lastQuestionIndex = questions.length - 1;
+let runningQuestionIndex = 0;
+
+// displays questions and  answers array//
+function questionRender() {
+  let q = questions[runningQuestionIndex];
+  // console.log(q);
+  for (var i = 0; i < q.choices.length; i++) {
+    questionDis.textContent = q.question;
+    var answBtn = document.createElement("BUTTON");
+    answBtn.textContent = q.choices[i];
+    answerChoices.append(answBtn);
+  }
+
+  //   var btn = answerChoices.createElement("BUTTON");
+  //   btn.innerHTML = q.choices[i];
+  //   document.body.appendChild(btn);
 }
+
+// function startTimer() {
+//   if (running) {
+//     return;
+//   }
+
+//   totalSeconds = parseInt(workMinutesInput.value, 10) * 60;
+//   console.log(totalSeconds);
+//   running = true;
+//   // // Write code to start the timer here
+//   interval = setInterval(function() {
+//     secondsElapsed++;
+//     displayTime(totalSeconds - secondsElapsed);
+//   }, 1000);
+// }
+
+// function countRender() {
+
+// }

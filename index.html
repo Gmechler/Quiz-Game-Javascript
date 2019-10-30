@@ -21,10 +21,10 @@
 <div class="container">
   <div class="container sticky-top">
     <header>
-      <!-- high score a time counter buttons -->
+      <!-- high score and time counter buttons -->
       <div class="row justify-content-between">
-        <p class="col">High Score</p>
-        <p class="col text-right">Time</p>
+        <p class="col">View High Scores</p>
+        <p id="timer" class="col text-right">Time</p>
       </div>
 
     </header>
@@ -32,7 +32,7 @@
 
   <body>
     <!-- start card -->
-    <div class="container mt-4">
+    <div class="container mt-4" style="display: ;">
       <div id="startCard" class="row justify-content-center" ;>
         <div class="card" style="width: 20rem;">
           <img
@@ -55,14 +55,11 @@
     <!-- quiz -->
     <div id="quiz" class="container" style="display: none;">
       <div class="row">
-        <div id="question">Question</div>
+        <div id="question">
+          
+        </div>
         <div class="answer-choices">
-          <ul>
-            <li class="choice" id="A">A</li>
-            <li class="choice" id="B">B</li>
-            <li class="choice" id="C">C</li>
-            <li class="choice" id="D">D</li>
-          </ul>
+         
         </div>
       </div>
 
@@ -101,7 +98,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="script.js"></script>
     <script src="questions.js"></script>
+    <script src="script.js"></script>
+    
   </body>
 </html>
