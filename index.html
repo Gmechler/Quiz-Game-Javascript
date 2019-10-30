@@ -18,19 +18,22 @@
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
+<div class="container">
+  <div class="container sticky-top">
+    <header>
+      <!-- high score a time counter buttons -->
+      <div class="row justify-content-between">
+        <p class="col">High Score</p>
+        <p class="col text-right">Time</p>
+      </div>
 
-  <header>
-    <!-- high score a time counter buttons -->
-    <div class="row justify-content-between">
-      <p class="col">High Score</p>
-      <p class="col text-right">Time</p>
-    </div>
-  </header>
+    </header>
+  </div>
 
   <body>
-    <div class="container">
-      <!-- start quiz -->
-      <div id="start" class="row justify-content-center">
+    <!-- start card -->
+    <div class="container mt-4">
+      <div id="startCard" class="row justify-content-center" ;>
         <div class="card" style="width: 20rem;">
           <img
             src="assests/images/tLight.jpg"
@@ -42,13 +45,45 @@
             <p class="card-text">
               Click the Start button when you are ready.
             </p>
-            <a href="#" class="btn btn-primary">Start the Quiz</a>
+            <a id="start" href="#" class="btn btn-primary">Start the Quiz</a>
           </div>
         </div>
       </div>
-      <div class="row" id="quiz" style="display: none;"></div>
+   
     </div>
 
+    <!-- quiz -->
+    <div id="quiz" class="container" style="display: none;">
+      <div class="row">
+        <div id="question">Question</div>
+        <div class="answer-choices">
+          <ul>
+            <li class="choice" id="A">A</li>
+            <li class="choice" id="B">B</li>
+            <li class="choice" id="C">C</li>
+            <li class="choice" id="D">D</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- score tracker -->
+      <!-- <div id="scoreContainer" style="display: none;"></div> -->
+    </div>
+
+
+       <!--progress bar footer -->
+       <!-- i cannot figure out why this will not switch dsplay on start click -->
+    <div id="progess" class="progress row sticky-bottom" style="display: none;">
+      <div
+        class="progress-bar progress-bar-striped progress-bar-animated"
+        role="progressbar"
+        aria-valuenow="75"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style="width: 75%"
+      ></div>
+    </div>
+  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -67,5 +102,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>
+    <script src="questions.js"></script>
   </body>
 </html>
