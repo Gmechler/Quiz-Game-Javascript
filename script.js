@@ -27,9 +27,22 @@ function questionRender() {
   for (var i = 0; i < q.choices.length; i++) {
     questionDis.textContent = q.question;
     var answBtn = document.createElement("BUTTON");
+    var br = document.createElement("br");
+    answBtn.className = "btn " + "btn-primary " + "mt-2 " + "choice ";
     answBtn.textContent = q.choices[i];
-    answerChoices.append(answBtn);
+    answerChoices.append(br, answBtn);
   }
+answBtn.onclick("click" checkAnswer(){
+
+
+}
+function checkAnswer(){
+
+}
+
+
+
+
 
   //   var btn = answerChoices.createElement("BUTTON");
   //   btn.innerHTML = q.choices[i];
