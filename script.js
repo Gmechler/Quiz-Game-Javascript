@@ -1,69 +1,73 @@
-var startBtn = document.querySelector("#start");
-var startCard = document.querySelector("#startCard");
-var quiz = document.querySelector("#quiz");
-var questionDis = document.querySelector("#question");
-var answerChoices = document.querySelector(".answer-choices");
-var progressBar = document.querySelector("#progress");
-var timer = document.querySelector("#timer");
+$(document).ready(function() {
+  var startBtn = document.querySelector("#start");
+  var startCard = document.querySelector("#startCard");
+  var quiz = document.querySelector("#quiz");
+  var questionDis = document.querySelector("#question");
+  var answerChoices = document.querySelector(".answer-choices");
+  var progressBar = document.querySelector("#progress");
+  var timeDisplay = document.querySelector("#timer");
+  var select = document.querySelector(".select");
 
-startBtn.addEventListener("click", startQuiz);
+  var runningQuestionIndex = 0;
+  var initials;
+  var interval;
+  var time = 60;
 
-function startQuiz() {
-  startCard.style.display = "none";
-  quiz.style.display = "block";
-  // countRender()
-  questionRender();
-  // progressBar.style.display = "block";
-}
+  console.log(runningQuestionIndex);
+  console.log(select);
+  startBtn.addEventListener("click", startQuiz);
 
-// questions array//
-let lastQuestionIndex = questions.length - 1;
-let runningQuestionIndex = 0;
-
-// displays questions and  answers array//
-function questionRender() {
-  let q = questions[runningQuestionIndex];
-  // console.log(q);
-  for (var i = 0; i < q.choices.length; i++) {
-    questionDis.textContent = q.question;
-    var answBtn = document.createElement("BUTTON");
-    var br = document.createElement("br");
-    answBtn.className = "btn " + "btn-primary " + "mt-2 " + "choice ";
-    answBtn.textContent = q.choices[i];
-    answerChoices.append(br, answBtn);
+  // intro page//
+  function startQuiz() {
+    startCard.style.display = "none";
+    quiz.style.display = "block";
+    // countRender()
+    questionRender();
+    timer();
   }
-answBtn.onclick("click" checkAnswer(){
 
+  // questions array//
+  function questionRender() {
+    answerRender();
+  }
 
-}
-function checkAnswer(){
+  let lastQuestionIndex = questions.length - 1;
+  var q = questions[runningQuestionIndex];
 
-}
+  function answerRender() {
+    for (var i = 0; i < q.choices.length; i++) {
+      questionDis.textContent = q.question;
+      var answBtn = document.createElement("BUTTON");
+      var br = document.createElement("br");
+      answBtn.className = "btn " + "btn-primary " + "mt-2 " + "select";
+      answBtn.textContent = q.choices[i];
+      answBtn.setAttribute("value", q.choices.indexOf(q.choices[i]));
+      answerChoices.append(br, answBtn);
+    }
+    answBtn.addEventListener("click", incrementer(runningQuestionIndex));
+  }
 
+  // questionRender();
+  function incrementer(questionIndex) {
+    questionIndex++;
+    console.log(questionIndex);
+  }
+  console.log(runningQuestionIndex);
 
-
-
-
-  //   var btn = answerChoices.createElement("BUTTON");
-  //   btn.innerHTML = q.choices[i];
-  //   document.body.appendChild(btn);
-}
-
-// function startTimer() {
-//   if (running) {
-//     return;
-//   }
-
-//   totalSeconds = parseInt(workMinutesInput.value, 10) * 60;
-//   console.log(totalSeconds);
-//   running = true;
-//   // // Write code to start the timer here
-//   interval = setInterval(function() {
-//     secondsElapsed++;
-//     displayTime(totalSeconds - secondsElapsed);
-//   }, 1000);
-// }
-
-// function countRender() {
-
-// }
+  function timer() {
+    interval = setInterval(function() {
+      time--;
+      timeDisplay.textContent = time;
+      if (time <= 0) {
+        time = 0;
+        // pause();
+        // done();
+      }
+      if (time < 10) {
+        timeDisplay.style.color = "red";
+        timeDisplay.style.fontSize = "25px";
+        timeDisplay.style.padding = "5px";
+      }
+    }, 1000);
+  }
+});
