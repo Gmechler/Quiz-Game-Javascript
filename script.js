@@ -3,18 +3,15 @@ $(document).ready(function() {
   var startCard = document.querySelector("#startCard");
   var quiz = document.querySelector("#quiz");
   var questionDis = document.querySelector("#question");
-  var answerChoices = document.querySelector(".answer-choices");
+  var answerChoices = document.querySelector("#answer-choices");
   var progressBar = document.querySelector("#progress");
   var timeDisplay = document.querySelector("#timer");
   var select = document.querySelector(".select");
-
   var runningQuestionIndex = 0;
   var initials;
   var interval;
   var time = 60;
 
-  console.log(runningQuestionIndex);
-  console.log(select);
   startBtn.addEventListener("click", startQuiz);
 
   // intro page//
@@ -28,6 +25,9 @@ $(document).ready(function() {
 
   // questions array//
   function questionRender() {
+    var q = questions[runningQuestionIndex];
+    questionDis.textContent = q.question;
+    console.log(q.question);
     answerRender();
   }
 
@@ -35,24 +35,28 @@ $(document).ready(function() {
   var q = questions[runningQuestionIndex];
 
   function answerRender() {
+    var q = questions[runningQuestionIndex];
     for (var i = 0; i < q.choices.length; i++) {
-      questionDis.textContent = q.question;
       var answBtn = document.createElement("BUTTON");
       var br = document.createElement("br");
       answBtn.className = "btn " + "btn-primary " + "mt-2 " + "select";
       answBtn.textContent = q.choices[i];
       answBtn.setAttribute("value", q.choices.indexOf(q.choices[i]));
       answerChoices.append(br, answBtn);
+      answBtn.addEventListener("click", incrementer);
     }
-    answBtn.addEventListener("click", incrementer(runningQuestionIndex));
   }
 
   // questionRender();
-  function incrementer(questionIndex) {
-    questionIndex++;
-    console.log(questionIndex);
+  function incrementer() {
+    runningQuestionIndex++;
+    questionDis.innerHTML = "";
+    answerChoices.innerHTML = "";
+    questionRender();
+    console.log(runningQuestionIndex);
   }
-  console.log(runningQuestionIndex);
+
+  // console.log(document.querySelector(".select"));
 
   function timer() {
     interval = setInterval(function() {
